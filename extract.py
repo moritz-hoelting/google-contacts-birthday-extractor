@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import csv
 import icalendar
 from datetime import date, timedelta
@@ -26,6 +24,7 @@ with open('contacts.csv', 'r', newline='', encoding='utf8') as file:
         event.add('dtend', d + timedelta(days=1))
         event.add('rrule', {'freq': 'yearly'})
         event.add('uid', f"birthday-{name.lower().replace(' ', '-')}")
+        event.add('transp', 'TRANSPARENT')
         calendar.add_component(event)
         
     with open('birthdays.ics', 'wb') as file:
